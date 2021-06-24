@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchWeatherThunk } from "./actions/weatherActions";
+import {
+  fetchLocationThunk,
+  fetchWeatherThunk,
+} from "./actions/weatherActions";
 
 function App() {
-  const [location, setLocation] = useState({lat:0, lon:0});
+  const [loc, setLocation] = useState({ lat: 0, lon: 0 });
   const [error, setError] = useState("");
+
   const dispatch = useDispatch();
   const data = useSelector((state) => state.data);
+  const location = useSelector((state) => state.location);
   useEffect(() => {
+    dispatch(fetchLocationThunk());
     dispatch(fetchWeatherThunk());
   }, [dispatch]);
   useEffect(() => {
@@ -19,12 +25,15 @@ function App() {
   }, []);
   const handlePosition = (pos) => {
     const { latitude, longitude } = pos.coords;
-    setLocation({lat: latitude, lon: longitude});
+    setLocation({ lat: latitude, lon: longitude });
   };
   return (
     <div className="App">
       <h1>Hola mundo</h1>
-      <h2>Localizacion: {location ? `Latitud: ${location.lat} Longitud: ${location.lon}` : "No hay ubicacion"}</h2>
+      <h2>
+        Localizacion:{" "}
+        {loc ? `Latitud: ${loc.lat} Longitud: ${loc.lon}` : "No hay ubicacion"}
+      </h2>
     </div>
   );
 }
