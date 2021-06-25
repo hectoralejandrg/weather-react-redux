@@ -1,4 +1,3 @@
-import { getLocation } from "../service/apiLocation";
 import { getWeather } from "../service/apiWeather";
 
 export const ACTIONS_TYPES = {
@@ -21,9 +20,9 @@ export const fetchWeatherFail = (err) => ({
   type: ACTIONS_TYPES.fetchWeatherFail,
   payload: err,
 });
-export const fetchWeatherThunk = () => {
+export const fetchWeatherThunk = (location) => {
   return (dispatch) =>
-    getWeather()
+    getWeather(location)
       .then((res) => dispatch(fetchWeatherSuccess(res.data)))
       .catch((err) => dispatch(fetchWeatherFail(err)));
 };
