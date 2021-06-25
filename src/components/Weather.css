@@ -5,10 +5,13 @@
 .wraper-header{
     display: grid;
     grid-template-columns: 60% 40%;
-    grid-template-rows: 35vh;
 }
 .wraper-body{
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-rows: 50vh;
+}
+.description{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }

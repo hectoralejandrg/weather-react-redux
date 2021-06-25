@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="app d-flex justify-content-center align-items-center">
       <div className="wraper">
-        <Weather />
+        <Weather data={data}/>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import { ACTIONS_TYPES } from "../actions/weatherActions";
 
 const INITIAL_STATE = {
-  data: [],
+  data: null,
   location: {lat: 0, lon:0},
   isLoading: false,
 };
