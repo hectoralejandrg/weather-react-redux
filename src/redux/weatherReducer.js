@@ -2,8 +2,9 @@ import { ACTIONS_TYPES } from "../actions/weatherActions";
 
 const INITIAL_STATE = {
   data: null,
-  location: {lat: 0, lon:0},
+  location: { lat: 0, lon: 0 },
   isLoading: false,
+  country: null,
 };
 
 export const reducer = (state = INITIAL_STATE, action) => {
@@ -36,6 +37,22 @@ export const reducer = (state = INITIAL_STATE, action) => {
         location: action.payload,
       };
     case ACTIONS_TYPES.fetchLocationFail:
+      return {
+        ...state,
+        isLoading: false,
+      };
+    case ACTIONS_TYPES.fetchCountry:
+      return {
+        ...state,
+        isLoading: false,
+      };
+    case ACTIONS_TYPES.fetchCountrySuccess:
+      return {
+        ...state,
+        isLoading: true,
+        country: action.payload,
+      };
+    case ACTIONS_TYPES.fetchCountryFail:
       return {
         ...state,
         isLoading: false,

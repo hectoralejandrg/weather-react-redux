@@ -1,17 +1,23 @@
-.card{
-    display: grid;
-    grid-template-columns: 100%;
+.card {
+  display: grid;
+  grid-template-columns: 100%;
 }
-.wraper-header{
-    display: grid;
-    grid-template-columns: 60% 40%;
+.wraper-header {
+  background: rgb(18, 21, 63);
+  background: linear-gradient(
+    0deg,
+    rgba(18, 21, 63, 1) 5%,
+    rgba(51, 52, 131, 1) 8%
+  );
+  display: grid;
+  grid-template-columns: 60% 40%;
 }
-.wraper-body{
-    display: grid;
-    grid-template-columns: 40% 60%;
-    grid-template-rows: 50vh;
+.wraper-body {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: 50vh;
 }
-.description{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.description {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
