@@ -35,7 +35,7 @@ const Weather = ({ data }) => {
       </div>
       <div className="wraper-body">
         <div>
-          <Country nameCountry={data.sys.country}/>
+          <Country nameCountry={data? data.sys.country: null }/>
         </div>
         <div>demas</div>
       </div>
