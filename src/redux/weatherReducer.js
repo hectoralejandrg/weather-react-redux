@@ -3,8 +3,9 @@ import { ACTIONS_TYPES } from "../actions/weatherActions";
 const INITIAL_STATE = {
   data: null,
   location: { lat: 0, lon: 0 },
-  isLoading: false,
   country: null,
+  forecast: null,
+  isLoading: false,
 };
 
 export const reducer = (state = INITIAL_STATE, action) => {
@@ -56,6 +57,19 @@ export const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isLoading: false,
+      };
+    case ACTIONS_TYPES.fetchForecast:
+      return {
+        ...state,
+      };
+    case ACTIONS_TYPES.fetchForecastSuccess:
+      return {
+        ...state,
+        forecast: action.payload,
+      };
+    case ACTIONS_TYPES.fetchForecastFail:
+      return {
+        ...state,
       };
     default:
       return state;

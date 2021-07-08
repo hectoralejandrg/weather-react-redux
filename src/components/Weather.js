@@ -11,6 +11,7 @@ const Weather = ({ data }) => {
             {Math.round(data.main.temp)}°
             <img
               src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+              alt="Icon weather"
             />
           </div>
           <h2 className="fw-lighter text-uppercase">

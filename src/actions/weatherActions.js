@@ -1,5 +1,5 @@
 import { getCountry } from "../service/apiCountry";
-import { getWeather } from "../service/apiWeather";
+import { getForecasts, getWeather } from "../service/apiWeather";
 
 export const ACTIONS_TYPES = {
   fetchWeather: "fetch_weather",
@@ -11,6 +11,9 @@ export const ACTIONS_TYPES = {
   fetchCountry: "fetch_country",
   fetchCountrySuccess: "fetch_country_success",
   fetchCountryFail: "fetch_country_fail",
+  fetchForecast: "fetch_forecast",
+  fetchForecastSuccess: "fetch_forecast_success",
+  fetchForecastFail: "fetch_forecast_fail",
 };
 
 export const fetchWeather = () => ({
@@ -67,4 +70,21 @@ export const fetchLocationThunk = () => {
       },
       () => dispatch(fetchLocationFail())
     );
+};
+export const fetchForecast = () => ({
+  type: ACTIONS_TYPES.fetchForecast,
+});
+export const fetchForecastSuccess = (forecast) => ({
+  type: ACTIONS_TYPES.fetchForecastSuccess,
+  payload: forecast,
+});
+export const fetchForecastFail = (err) => ({
+  type: ACTIONS_TYPES.fetchForecastFail,
+  payload: err,
+});
+export const fetchForecastThunk = (location) => {
+  return (dispatch) =>
+    getForecasts(location)
+      .then((res) => dispatch(fetchForecastSuccess(res.data)))
+      .catch((err) => dispatch(fetchForecastFail(err)));
 };

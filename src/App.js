@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  fetchForecastThunk,
   fetchLocationThunk,
   fetchWeatherThunk,
 } from "./actions/weatherActions";
@@ -17,12 +18,13 @@ function App() {
   useEffect(() => {
     if (location.lat && location.lon) {
       dispatch(fetchWeatherThunk(location));
+      dispatch(fetchForecastThunk(location));
     }
   }, [dispatch, location]);
   return (
     <div className="app d-flex justify-content-center align-items-center">
       <div className="wraper">
-        <Weather data={data}/>
+        <Weather data={data} />
       </div>
     </div>
   );
